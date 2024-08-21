@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Space Theme</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+    <style>
+        /* Custom CSS for glowing text effect */
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+        }
+        /* Custom CSS for form glowing effect */
+        .glow-form {
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* Hover effect for glowing form */
+        .glow-form:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 0, 255, 0.9);
+        }
+        /* Custom animation for glowing effect */
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(255, 0, 255, 1); }
+            100% { text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); }
+        }
+        /* Apply animation to the glowing form */
+        .animated-form {
+            animation: glow 1.5s infinite;
+        }
+        /* Navbar logo styling */
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 0.5rem;
+        }
+        /* Footer glowing text effect */
+        .footer-text {
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+        }
+        /* Video styling */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Ensure the video stays in the background */
+        }
+    </style>
+</head>
+<body class="relative text-white min-h-screen">
+    <!-- Background Video -->
+    <video class="background-video" autoplay muted loop>
+        <source src="{{ url_for('static', filename='videos/bg4.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navbar -->
+    <nav class="p-6 bg-transparent text-white">
+        <div class="container mx-auto flex justify-between items-center flex-wrap">
+            <a href="{{ url_for('index') }}"class="navbar-brand flex items-center text-2xl font-bold text-white">
+                <img src="./public/logo.png" alt="Logo" class="logo">
+                StarSketch
+            </a>
+            <button class="md:hidden text-white focus:outline-none" onclick="document.getElementById('menu').classList.toggle('hidden')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <div id="menu" class="w-full md:flex md:w-auto hidden">
+                <div class="flex flex-col md:flex-row items-center md:ml-auto space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
+                    <a href="{{ url_for('features') }}" class="px-4 py-2 hover:bg-purple-600 rounded transition">Features</a>
+                    <a href="{{ url_for('about') }}" class="px-4 py-2 hover:bg-purple-600 rounded transition">About</a>
+                    <a href="{{ url_for('contact') }}" class="px-4 py-2 hover:bg-purple-600 rounded transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Wrapper -->
+    <div class="relative z-10 pt-24 p-8 md:p-16 min-h-screen">
+        <h1 class="text-4xl md:text-6xl font-bold mb-8 text-center text-purple-300 glow-text">Contact Us</h1>
+
+        <div class="flex justify-center">
+            <form class="bg-gray-800 p-8 rounded-lg glow-form animated-form w-full max-w-lg">
+                <div class="mb-6">
+                    <label for="name" class="block text-lg font-bold text-purple-300">Name</label>
+                    <input type="text" id="name" name="name" class="mt-1 block w-full p-2 bg-gray-900 text-white rounded border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="email" class="block text-lg font-bold text-purple-300">Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full p-2 bg-gray-900 text-white rounded border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="phone" class="block text-lg font-bold text-purple-300">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="mt-1 block w-full p-2 bg-gray-900 text-white rounded border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+
+                <div class="mb-6">
+                    <label for="message" class="block text-lg font-bold text-purple-300">Message</label>
+                    <textarea id="message" name="message" rows="4" class="mt-1 block w-full p-2 bg-gray-900 text-white rounded border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500" required></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-2 px-4 bg-purple-600 text-white font-bold rounded hover:bg-purple-700 transition">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-4">
+        <p class="text-center text-gray-400 footer-text">&copy; 2024 StarSketch. KSQUARE All rights reserved.</p>
+    </footer>
+</body>
+</html>

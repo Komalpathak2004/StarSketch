@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StarSketch - About</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+  <style>
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.25;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+        margin-right: 10px;
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .glow-border {
+      border: 4px solid;
+      border-image-slice: 1;
+      border-width: 4px;
+      border-image-source: linear-gradient(45deg, #3b82f6, #9333ea, #f472b6, #3b82f6);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5),
+        0 0 20px rgba(147, 51, 234, 0.5),
+        0 0 30px rgba(244, 114, 182, 0.5);
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.7); /* Darker background for better text contrast */
+    }
+
+    .glow-border h2,
+    .glow-border h3 {
+      background: linear-gradient(90deg, #ff005d, #ffae00); /* More vibrant gradient for headings */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Reduced text shadow for visibility */
+    }
+
+    .founder-card {
+      background: rgba(0, 0, 0, 0.8); /* Darker background for cards */
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5),
+        0 0 20px rgba(147, 51, 234, 0.5),
+        0 0 30px rgba(244, 114, 182, 0.5);
+      border: 4px solid;
+      border-image-slice: 1;
+      border-image-source: linear-gradient(45deg, #3b82f6, #9333ea, #f472b6, #3b82f6);
+    }
+
+    .founder-card h4 {
+      background: linear-gradient(90deg, #ff005d, #ffae008a); /* More vibrant gradient for founder names */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Reduced text shadow for visibility */
+    }
+
+    .founder-section {
+      display: flex;
+      align-items: stretch;
+      gap: 3rem; /* Horizontal gap between founder cards and image */
+    }
+
+    .founder-cards {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .founder-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .founder-image img {
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5),
+        0 0 20px rgba(147, 51, 234, 0.5),
+        0 0 30px rgba(244, 114, 182, 0.5);
+    }
+
+    .footer-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 30px;
+        color: #e2e8f0;
+        font-family: 'Roboto', sans-serif;
+        text-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 20px rgba(255, 105, 180, 0.6);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+  <!-- Background Video -->
+  <video autoplay muted loop class="video-background">
+    <source src="{{ url_for('static', filename='videos/bg3.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <nav class="p-6 bg-transparent text-white">
+    <div class="container mx-auto flex justify-between items-center flex-wrap">
+      <a href="{{ url_for('index') }}" class="navbar-brand flex items-center">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+        StarSketch
+      </a>
+      <button class="md:hidden text-white focus:outline-none" onclick="document.getElementById('menu').classList.toggle('hidden')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <div id="menu" class="w-full md:flex md:w-auto hidden">
+        <div class="flex flex-col md:flex-row items-center md:ml-auto space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
+          <a href="{{ url_for('features') }}" class="px-4 py-2 hover:bg-purple-600 rounded transition">Features</a>
+                <a href="{{ url_for('about') }}" class="px-4 py-2 hover:bg-purple-600 rounded transition">About</a>
+                <a href="{{ url_for('contact') }}" class="px-4 py-2 hover:bg-purple-600 rounded transition">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content Section -->
+  <section class="content-wrapper py-10 px-6 mb-6">
+    <div class="max-w-7xl mx-auto text-center glow-border mb-6">
+      <h2 class="text-4xl font-bold mb-6">About StarSketch</h2>
+      <p class="text-lg leading-relaxed mb-8">
+        Welcome to <span class="text-teal-400 font-semibold">StarSketch</span>, an innovative platform where education meets creativity.
+        Here, you can input any educational topic or concept as a prompt, and our cutting-edge machine learning
+        and artificial intelligence technology will generate interactive, realistic comics that visually narrate
+        the topic in your chosen art style.
+      </p>
+      <p class="text-lg leading-relaxed mb-8">
+        By transforming traditional text-based learning into dynamic and immersive comic experiences,
+        <span class="text-teal-400 font-semibold">ComicCraft</span> enhances understanding and retention,
+        offering a personalized, fun, and educational journey for users of all ages.
+      </p>
+    </div>
+
+    <div class="mt-12 text-center glow-border mb-8">
+      <h3 class="text-3xl font-semibold">Why Choose StarSketch?</h3>
+      <ul class="mt-6 space-y-4 text-left max-w-3xl mx-auto">
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-teal-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Interactive and realistic comics tailored to your educational needs.</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-teal-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Advanced machine learning and AI technology for personalized learning experiences.</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-teal-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <span>Engaging, fun, and educational content for users of all ages.</span>
+        </li>
+      </ul>
+    </div>
+    <!-- Founders Section -->
+    <section class="mt-16 mb-12 max-w-7xl mx-auto glow-border p-8">
+      <h2 class="text-4xl font-bold mb-6 text-center">StarSketch Creators</h2>
+      <div class="founder-section">
+        <div class="founder-cards">
+          <div class="founder-card">
+            <h4>Kunal Nayak</h4>
+            <p class="mt-2">Kunal Nayak is a visionary in educational technology, merging creativity and machine learning to transform how students engage with content. His passion for innovation drives StarSketch's mission to revolutionize learning through interactive comics.</p>
+          </div>
+          <div class="founder-card">
+            <h4>Komal Pathak</h4>
+            <p class="mt-2">Komal Pathak brings a wealth of experience in AI and user-centric design, ensuring that StarSketch offers a seamless and engaging experience. Her innovative approach helps bridge the gap between technology and education, making learning accessible and fun.</p>
+          </div>
+        </div>
+        <div class="founder-image">
+          <img src="{{ url_for('static', filename='images/founder.png') }}" alt="Founders Image">
+        </div>
+        <p class="footer-text">&copy; 2024 StarSketch. KSQUARE All rights reserved.</p>
+      </div>
+    </section>
+  </section>
+</body>
+
+</html>
