@@ -2,7 +2,7 @@
 
 Welcome to *StarSketch*—where space and science come alive through interactive comics! 🚀✨
 
-![StarSketch Demo](static\images\demoimg.jpeg)  
+![StarSketch Demo](demoimg.jpeg)  
 
 ## Idea 💡
 
