@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, send_file
 import os
  # Import your function from the module
 
-app = Flask(__name__)
+ app = Flask(__name__)
 
 # Route to render the home page
 @app.route('/')
